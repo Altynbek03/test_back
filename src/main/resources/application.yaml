@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test_task
+    username: postgres
+    password: 8963
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        show_sql:
+          false;
+        dialect:
+          org.hibernate.dialect.PostgreSQLDialect
+  security:
+    user:
+      name: admin
+      password: admin
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: erasyl.altinbek@gmail.com
+    password: rccrrliuhkscbcsc
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: smtp.gmail.com
+
+jwt-token:
+  secret-key: debc5ae89f9a149d8c0e6f60a5c74b5f72c29cd159ab420b50f40ca14bd2d3ad41d25372c4bac666ca98eaab8d670b0bdc846d368ff900c976c0bab156abbd433c1d5220b09b1463f8772b0a9a2a4ca1e2e93d73ef419e5af1ef3e27fa8e12441ad3f0f3db38def0d0c31d05895a5b563c7a4db945068b258a310d34d0aad14fb3b1f0e17c7dc2d4d90c541cfaed31a61b3256ee3d28fdef12d2579bd80e2c74ac23a212c27b83eabe7aa4d66753e316efe7a010dff58b5bfc4c0335be56ba7213575e8a34542b0eea575703aa2bf772f3a06ca3c7428eedcf86e586943d7ba58bb2368ba2878a146b96f8ce5490ac1e901bd12ca681496ea50a4e925a7e2a28
