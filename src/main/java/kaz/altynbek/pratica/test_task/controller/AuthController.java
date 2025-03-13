@@ -1,5 +1,6 @@
 package kaz.altynbek.pratica.test_task.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import kaz.altynbek.pratica.test_task.dto.request.AuthRequest;
 import kaz.altynbek.pratica.test_task.dto.request.RegisterUserRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@Tag(name = "Authentication", description = "API for user authentication")
 public class AuthController {
     private final AuthService authService;
 

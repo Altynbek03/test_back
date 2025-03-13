@@ -28,15 +28,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/admin/**").hasAuthority(Role.ADMIN.name())
-                    .requestMatchers("/user/**").hasAuthority(Role.USER.name())
-                    .requestMatchers("/auth/**", "/course/**", "/student/**").permitAll()
-                    .anyRequest().authenticated()
-            )
-            .sessionManagement(session -> session
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            )
+            .authorizeHttpRequests(auth -> auth.requestMatchers("/admin/**")
+                                               .hasAuthority(Role.ADMIN.name())
+                                               .requestMatchers("/user/**")
+                                               .hasAuthority(Role.USER.name())
+                                               .requestMatchers(
+                                                       "/auth/**",
+                                                       "/course/**",
+                                                       "/student/**",
+                                                       "/swagger-ui/**",
+                                                       "/v3/api-docs/**",
+                                                       "/swagger-resources/**",
+                                                       "/swagger-ui.html",
+                                                       "/webjars/**")
+                                               .permitAll()
+                                               .anyRequest()
+                                               .authenticated())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
