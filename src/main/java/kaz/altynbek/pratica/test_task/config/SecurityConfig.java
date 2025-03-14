@@ -28,19 +28,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests(auth -> auth.requestMatchers("/admin/**")
+            .authorizeHttpRequests(auth -> auth.requestMatchers("/course/create", "/course/update", "/course/delete")
                                                .hasAuthority(Role.ADMIN.name())
-                                               .requestMatchers("/user/**")
-                                               .hasAuthority(Role.USER.name())
-                                               .requestMatchers(
-                                                       "/auth/**",
-                                                       "/course/**",
-                                                       "/student/**",
-                                                       "/swagger-ui/**",
-                                                       "/v3/api-docs/**",
-                                                       "/swagger-resources/**",
-                                                       "/swagger-ui.html",
-                                                       "/webjars/**")
+                                               .requestMatchers("/course/register-student", "/course/get-info/**")
+                                               .hasAnyAuthority(Role.ADMIN.name(), Role.USER.name())
+                                               .requestMatchers("/auth/**",
+                                                                "/swagger-ui/**",
+                                                                "/v3/api-docs/**",
+                                                                "/swagger-resources/**",
+                                                                "/swagger-ui.html",
+                                                                "/webjars/**")
                                                .permitAll()
                                                .anyRequest()
                                                .authenticated())

@@ -3,6 +3,7 @@ package kaz.altynbek.pratica.test_task.service;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import kaz.altynbek.pratica.test_task.model.Role.Role;
 import kaz.altynbek.pratica.test_task.model.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -44,11 +45,7 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                   .verifyWith(getSigningKey())
-                   .build()
-                   .parseSignedClaims(token)
-                   .getPayload();
+        return Jwts.parser().verifyWith(getSigningKey()).build().parseSignedClaims(token).getPayload();
     }
 
     private Boolean isTokenExpired(String token) {
@@ -57,13 +54,14 @@ public class JwtService {
 
     public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, user.getEmail());
+        return createToken(claims, user.getEmail(), user.getRole());
     }
 
-    private String createToken(Map<String, Object> claims, String subject) {
+    private String createToken(Map<String, Object> claims, String subject, Role role) {
         return Jwts.builder()
                    .claims(claims)
                    .subject(subject)
+                   .claim("role", role.toString())
                    .issuedAt(new Date(System.currentTimeMillis()))
                    .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                    .signWith(getSigningKey())

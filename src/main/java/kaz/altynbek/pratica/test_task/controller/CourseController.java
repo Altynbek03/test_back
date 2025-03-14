@@ -1,5 +1,7 @@
 package kaz.altynbek.pratica.test_task.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import kaz.altynbek.pratica.test_task.dto.request.CreateCourseRequest;
 import kaz.altynbek.pratica.test_task.dto.request.DeleteCourseRequest;
@@ -14,11 +16,13 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/course")
+@Tag(name = "Курсы", description = "Управление учебными курсами")
 @RequiredArgsConstructor
 public class CourseController {
     private final CourseService courseService;
 
     @PostMapping("/create")
+    @Operation(summary = "Создать курс", description = "создать курс")
     public BaseResponse createCourse(@RequestBody @Valid CreateCourseRequest createCourseRequest) {
         log.info("start createCourse operation with requestId: {}", createCourseRequest.getRequestId());
         log.debug("start createCourse operation with request: {}", createCourseRequest);
@@ -29,6 +33,7 @@ public class CourseController {
     }
 
     @PostMapping("/update")
+    @Operation(summary = "Редактировать курс", description = "Обновляет информацию о курсе")
     public BaseResponse editCourse(@RequestBody @Valid EditCourseRequest editCourseRequest) {
         log.info("start editCourse operation with requestId: {}", editCourseRequest.getRequestId());
         log.debug("start editCourse operation with request: {}", editCourseRequest);
@@ -39,6 +44,7 @@ public class CourseController {
     }
 
     @PostMapping("/delete")
+    @Operation(summary = "Удалить курс", description = "Удаляет курс по ID")
     public BaseResponse deleteCourse(@RequestBody @Valid DeleteCourseRequest deleteCourseRequest) {
         log.info("start deleteCourse operation with requestId: {}", deleteCourseRequest.getRequestId());
         log.debug("start deleteCourse operation with request: {}", deleteCourseRequest);
@@ -49,6 +55,7 @@ public class CourseController {
     }
 
     @PostMapping("/register-student")
+    @Operation(summary = "Зарегистрировать студента", description = "Регистрирует студента на курс")
     public BaseResponse registerStudent(@RequestBody @Valid RegisterStudentToCourseRequest request) {
         log.info("start registerStudent operation with requestId: {}", request.getRequestId());
         log.debug("start registerStudent operation with request: {}", request);
@@ -59,6 +66,7 @@ public class CourseController {
     }
 
     @GetMapping("/get-info/{courseId}")
+    @Operation(summary = "Получить информацию о курсе", description = "Возвращает данные курса по его идентификатору")
     public BaseResponse getCourseInfo(@PathVariable("courseId") Long courseId) {
         log.info("start getCourseInfo operation with requestId: {}", courseId);
         log.debug("start getCourseInfo operation with request: {}", courseId);

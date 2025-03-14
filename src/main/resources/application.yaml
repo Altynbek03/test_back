@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/test_task
-    username: postgres
-    password: 8963
+    url: jdbc:postgresql://localhost:5433/bank
+    username: myuser
+    password: mypassword
   flyway:
     enabled: true
     baseline-on-migrate: true
@@ -37,9 +37,10 @@ spring:
 
 springdoc:
   swagger-ui:
-    path: /docs
+    path: /swagger-ui.html
+    operations-sorter: method
   api-docs:
-    path: /api-docs
+    path: /v3/api-docs
 
 
 jwt-token:
