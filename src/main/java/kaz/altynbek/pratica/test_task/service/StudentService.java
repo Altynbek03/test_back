@@ -45,13 +45,12 @@ public class StudentService {
         } catch (StudentNotFoundException e) {
             log.error(e.getMessage());
             return BaseResponse.builder().success(false).errorCode(400).message(e.getMessage()).build();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("Unexpected error occurred while deleting student", e);
             return BaseResponse.builder().success(false).errorCode(500).message(e.getMessage()).build();
         }
     }
-    
+
     public Boolean isStudentExistsByEmailAndCourse(String email, Course course) {
         return studentRepository.existsByEmailAndCourse(email, course);
     }

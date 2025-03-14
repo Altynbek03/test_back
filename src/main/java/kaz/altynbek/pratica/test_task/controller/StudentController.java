@@ -1,7 +1,6 @@
 package kaz.altynbek.pratica.test_task.controller;
 
 import jakarta.validation.Valid;
-import kaz.altynbek.pratica.test_task.dto.request.CreateStudentRequest;
 import kaz.altynbek.pratica.test_task.dto.request.DeleteStudentRequest;
 import kaz.altynbek.pratica.test_task.dto.request.EditStudentRequest;
 import kaz.altynbek.pratica.test_task.dto.response.BaseResponse;

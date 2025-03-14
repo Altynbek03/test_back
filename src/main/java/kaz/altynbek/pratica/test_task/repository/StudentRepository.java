@@ -10,6 +10,8 @@ import java.util.Optional;
 @Repository
 public interface StudentRepository extends CrudRepository<Student, Long> {
     boolean existsByEmail(String email);
+
     Optional<Student> findByEmail(String email);
+
     boolean existsByEmailAndCourse(String email, Course course);
 }

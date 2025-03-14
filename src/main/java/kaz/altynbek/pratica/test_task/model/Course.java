@@ -34,12 +34,20 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", description='" + description + '\'' +
-               ", startDate=" + startDate +
-               ", endDate=" + endDate +
-               ", students=" + studentsToString() +
+               "id=" +
+               id +
+               ", name='" +
+               name +
+               '\'' +
+               ", description='" +
+               description +
+               '\'' +
+               ", startDate=" +
+               startDate +
+               ", endDate=" +
+               endDate +
+               ", students=" +
+               studentsToString() +
                '}';
     }
 
@@ -48,9 +56,15 @@ public class Course {
             return "[]";
         }
         return students.stream()
-                       .map(student -> "{id=" + student.getId() +
-                                       ", name=" + student.getFirstName() + " " + student.getLastName() +
-                                       ", email=" + student.getEmail() + "}")
+                       .map(student -> "{id=" +
+                                       student.getId() +
+                                       ", name=" +
+                                       student.getFirstName() +
+                                       " " +
+                                       student.getLastName() +
+                                       ", email=" +
+                                       student.getEmail() +
+                                       "}")
                        .toList()
                        .toString();
     }

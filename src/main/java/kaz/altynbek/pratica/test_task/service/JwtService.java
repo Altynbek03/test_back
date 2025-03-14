@@ -22,10 +22,9 @@ import java.util.function.Function;
 @Service
 @RequiredArgsConstructor
 public class JwtService {
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 10;
     @Value("${jwt-token.secret-key}")
     private String signingKey;
-
-    private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 10;
 
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(signingKey.getBytes());

@@ -16,8 +16,7 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(student.getEmail());
         message.setSubject("Регистрация на курс");
-        message.setText("Вы успешно зарегистрированы на курс: " + course.getName() +
-                        ". Дата начала: " + course.getStartDate());
+        message.setText("Вы успешно зарегистрированы на курс: " + course.getName() + ". Дата начала: " + course.getStartDate());
         mailSender.send(message);
     }
 
