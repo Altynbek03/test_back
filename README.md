@@ -29,7 +29,7 @@ API-эндпоинты
 
 Стек технологий
 
-- Java 17+, Spring Boot, Spring Security
+- Java 17, Spring Boot, Spring Security
 - JWT, PostgreSQL/H2
 - Lombok, Swagger (Springdoc OpenAPI)
 
