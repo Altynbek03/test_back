@@ -34,7 +34,7 @@ API-эндпоинты
 - Lombok, Swagger (Springdoc OpenAPI)
 
 Использование:
-Есть открытие ендпоинты для регистрации пользователей с ролями ADMIN, USER
+Есть открытые ендпоинты для регистрации пользователей с ролями ADMIN, USER
 пример запроса на создание пользователя с ролью admin:
 
 curl --location 'http://localhost:8080/auth/register-admin' \
